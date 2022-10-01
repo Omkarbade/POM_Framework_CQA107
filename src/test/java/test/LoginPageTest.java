@@ -2,10 +2,13 @@ package test;
 
 import Base.Base;
 import Pages.LoginPage;
+import Utility.Utility;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
 
 import static org.testng.Assert.assertEquals;
 @Listeners()
@@ -31,20 +34,28 @@ public class LoginPageTest extends Base {
         driver.get(url);
     }
     @Test
-    public  void validloginPageWithConfigDataTest() {
+    public  void validloginPageWithConfigDataTest() throws IOException {
         LoginPage LoginP = new LoginPage();
         LoginP.loginUser();
+
         String homePageTitle = LoginP.verifyHomePage();
-        assertEquals(homePageTitle, "Facebook");
+        assertEquals(homePageTitle, "Faceboo");
         System.out.println(homePageTitle);
     }
-    @Test
-    public void validateInvalidLoginCredTest() {
-        LoginP=new LoginPage();
-        message=LoginP.validateInvalidLoginCred();
-      //  assertEquals(message,"The password that you've entered is incorrect. Forgotten password?");
-
-    }
+//    @Test
+//    public void validateInvalidLoginCredTest() {
+//        LoginP=new LoginPage();
+//        message=LoginP.validateInvalidLoginCred();
+//       // assertEquals(message,"The password that you've entered is incorrect. Forgotten password?");
+//
+//    }
+//    @Test
+//    public void loginUsingXlsx() {
+//        LoginP=new LoginPage();
+//        message=LoginP.validateInvalidLoginCred();
+//        // assertEquals(message,"The password that you've entered is incorrect. Forgotten password?");
+//
+//    }
     @SuppressWarnings("static-access")
     @AfterMethod
     public void terminateDriver() {

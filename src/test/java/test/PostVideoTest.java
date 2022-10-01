@@ -14,6 +14,7 @@ public class PostVideoTest extends Base {
     }
 
 
+    // initialize browser method
     @SuppressWarnings("static-access")
     @BeforeMethod
     public void triggerDriver(){
@@ -23,6 +24,8 @@ public class PostVideoTest extends Base {
             e.printStackTrace();
         }
     }
+
+    // post the video/image.
     @Test
     public void post() {
         String url=prop.getProperty("baseURL");
@@ -31,6 +34,7 @@ public class PostVideoTest extends Base {
         vid.postvideo_photo();
     }
 
+    //close browser method.
     @SuppressWarnings("static-access")
     @AfterMethod
     public void terminateDriver() {

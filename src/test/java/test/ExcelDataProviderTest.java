@@ -4,20 +4,13 @@ import Base.Base;
 import Utility.ExcelUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import static Base.Base.driver;
 
 public class ExcelDataProviderTest extends Base {
-//    @BeforeTest
-//    public void setUpTest() {
-//      //  String projectPath = System.getProperty("user.dir");
-////        System.setProperty("webdriver.gecko.driver","C:\\Users\\kmani\\Downloads\\geckodriver-v0.31.0-win64\\geckodriver.exe");
-////        driver = new FirefoxDriver();
-//    }
+
+    //initialize driver
 @BeforeMethod
 public void triggerDriver(){
     try {
@@ -44,7 +37,7 @@ public void triggerDriver(){
         Object data[][] = testData(excelPath, "LoginTestData");
         return data;
     }
-
+///get the data from excel sheet.
     public Object[][] testData(String excelPath, String sheetName) {
         ExcelUtil excel = new ExcelUtil(excelPath, sheetName);
 
@@ -60,8 +53,20 @@ public void triggerDriver(){
                 //System.out.println(cellData + " " );
                 data[i-1][j] = cellData;
             }
-            //System.out.println();
+            System.out.println();
         }
         return data;
+    }
+
+    // close driver
+    @SuppressWarnings("static-access")
+    @AfterMethod
+    public void terminateDriver() {
+        try {
+            Thread.sleep(4000);
+            utility.closeDriver();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

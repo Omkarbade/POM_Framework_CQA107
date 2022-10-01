@@ -18,8 +18,8 @@ public class ExcelUtil {
     }
 
     public static void main(String[] args) {
-        //getRowCount();
-//		getCellDataString(0,0);
+        getRowCount();
+		getCellDataString(0,0);
         getCellDataNumber(1,1);
     }
 

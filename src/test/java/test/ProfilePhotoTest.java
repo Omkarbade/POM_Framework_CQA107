@@ -13,7 +13,7 @@ public class ProfilePhotoTest extends Base {
             super();
         }
 
-
+//initialize driver
         @SuppressWarnings("static-access")
         @BeforeMethod
         public void triggerDriver(){
@@ -23,6 +23,8 @@ public class ProfilePhotoTest extends Base {
                 e.printStackTrace();
             }
         }
+
+        //upload photo on profile.
         @Test
             public void UploadProfilephoto() {
                 String url=prop.getProperty("baseURL");
@@ -30,6 +32,8 @@ public class ProfilePhotoTest extends Base {
             ProfilePhoto pro = new ProfilePhoto();
             pro.UploadProfilephoto();
             }
+
+            //close driver.
 
         @SuppressWarnings("static-access")
         @AfterMethod

@@ -6,8 +6,11 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.internal.TestResult;
 
+import java.io.IOException;
+
+//create I listeners and there override methods
 public class Listeners implements ITestListener {
-  Base base =new Base();
+  Utility base =new Utility();
 
   @Override
   public void onTestStart(ITestResult result) {
@@ -20,7 +23,11 @@ public class Listeners implements ITestListener {
   @Override
   public void onTestFailure(ITestResult result) {
     String testName = result.getName();
-    base.getScreenShots("LoginPageTest");
+    try {
+      base.getScreenShots();
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
   }
   @Override
   public void onTestSkipped(ITestResult result) {

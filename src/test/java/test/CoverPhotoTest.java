@@ -2,18 +2,17 @@ package test;
 
 import Base.Base;
 import Pages.CoverPhoto;
-import Pages.ProfilePhoto;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static Base.Base.*;
 
 public class CoverPhotoTest extends Base {
     public CoverPhotoTest() {
         super();
     }
 
+    //initialize driver
 
     @SuppressWarnings("static-access")
     @BeforeMethod
@@ -24,6 +23,7 @@ public class CoverPhotoTest extends Base {
             e.printStackTrace();
         }
     }
+    //upload cover photo on user profile
     @Test
     public void upcoverphoto() {
         String url=prop.getProperty("baseURL");
@@ -31,6 +31,7 @@ public class CoverPhotoTest extends Base {
         CoverPhoto pro = new CoverPhoto();
         pro.coverphoto();
     }
+    //close driver
 
     @SuppressWarnings("static-access")
     @AfterMethod

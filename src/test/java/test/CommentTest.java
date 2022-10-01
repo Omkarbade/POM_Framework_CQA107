@@ -14,7 +14,7 @@ public class CommentTest extends Base {
         super();
     }
 
-
+//initialize driver
     @SuppressWarnings("static-access")
     @BeforeMethod
     public void triggerDriver(){
@@ -24,6 +24,8 @@ public class CommentTest extends Base {
             e.printStackTrace();
         }
     }
+
+    // comment or like a photo or video.
     @Test
     public void commentphoto() {
         String url=prop.getProperty("baseURL");
@@ -32,6 +34,7 @@ public class CommentTest extends Base {
         com.commentphoto();
     }
 
+    //close driver
     @SuppressWarnings("static-access")
     @AfterMethod
     public void terminateDriver() {

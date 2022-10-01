@@ -8,10 +8,11 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.LinkedList;
 import java.util.List;
 
+//create class and its extends base class
 
 public class LoginPage extends Base {
 
-    @FindBy(id = "email")
+    @FindBy(name = "email")
     WebElement emailId;
 
     @FindBy(name = "pass")
@@ -27,10 +28,12 @@ public class LoginPage extends Base {
     WebElement ErrorMsg;
     private Alert email;
 
+    //create constructor initialize web elements use pagefactory class.
     public LoginPage() {
         PageFactory.initElements(driver, this);
     }
 
+    // to check user able to login or not.
     public void loginUser() {
         try {
             emailId.sendKeys(prop.getProperty("emailId"));
@@ -63,22 +66,31 @@ public class LoginPage extends Base {
         return message;
     }
 
-
+    /**
+     * Method: login into facebok with data using excel sheet.
+     */
         public String validateInvalidLoginCred() {
             try {
                 List<List<String>> values = new LinkedList<List<String>>();
                 values.addAll(utility.excelReader());
-                email.sendKeys(values.get(1).get(0));
-                password.sendKeys(values.get(1).get(1));
+                Thread.sleep(2000);
+                System.out.println("username "+values.get(0).get(0));
+                System.out.println("password "+values.get(0).get(1));
+                Thread.sleep(1000);
+                email.sendKeys(values.get(0).get(0));
+                Thread.sleep(1000);
+                password.sendKeys(values.get(0).get(1));
                 Thread.sleep(2000);
                 loginBtn.click();
                 message = ErrorMsg.getText();
                 System.out.println(message);
+
             } catch (Exception e) {
 
             }
             return message;
         }
+        // its verify homepage title and its return title.
         public String verifyHomePage() {
             String homePageTitle = driver.getTitle();
             return homePageTitle;
