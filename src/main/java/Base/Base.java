@@ -3,10 +3,6 @@ package Base;
 import Pages.LoginPage;
 import Utility.Utility;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import java.io.File;
@@ -22,11 +18,7 @@ public class Base {
     public static FileInputStream excelfile;
     public static Properties prop;
     public static Utility utility;
-    protected static XSSFWorkbook xWorkbook;
-    protected static XSSFSheet xsheet;
-    protected static XSSFCell xCell;
-    protected static XSSFRow xRow;
-    protected static Object[][] data;
+
 
 
     public static LoginPage LoginP;

@@ -51,20 +51,20 @@ public class LoginPage extends Base {
     /**
      * Method: login into facebok with data using xlsx sheet
      */
-    @SuppressWarnings("static-access")
-    public String loginUsingXlsx() {
-        List<List<String>> values = new LinkedList<List<String>>();
-        try {
-            values.addAll(utility.excelReader());
-            email.sendKeys(values.get(0).get(0));
-            password.sendKeys(values.get(0).get(1));
-            loginBtn.click();
-        } catch (Exception e) {
-
-            e.printStackTrace();
-        }
-        return message;
-    }
+//    @SuppressWarnings("static-access")
+//    public String loginUsingXlsx() {
+//        List<List<String>> values = new LinkedList<List<String>>();
+//        try {
+//            values.addAll(utility.excelReader());
+//            email.sendKeys(values.get(0).get(0));
+//            password.sendKeys(values.get(0).get(1));
+//            loginBtn.click();
+//        } catch (Exception e) {
+//
+//            e.printStackTrace();
+//        }
+//        return message;
+//    }
 
     /**
      * Method: login into facebok with data using excel sheet.

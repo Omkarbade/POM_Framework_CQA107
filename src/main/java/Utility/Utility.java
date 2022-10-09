@@ -7,13 +7,10 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.io.FileHandler;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -21,6 +18,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import static Base.Base.*;
@@ -113,7 +111,7 @@ public class Utility {
         String date1 = date.toString();
         System.out.println("Date is: "+date1);
 
-        String date2 = date1.replaceAll(":", "_");
+        String date2 = date1.replaceAll(":", "_");///timing
         System.out.println("Date without : is: "+date2);
         TakesScreenshot ts = (TakesScreenshot) driver;
         File srcFile = ts.getScreenshotAs(OutputType.FILE);
@@ -128,10 +126,35 @@ public class Utility {
         }
 
     }
+    //Method: Random string genrate
+    public static void RandomString() {
+        try {
+            String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            String randomString = "";
+
+            int length = 5;
+
+            Random rand = new Random();
+            char[] text = new char[length];
+            for (int i = 0; i < length; i++) {
+                text[i] = characters.charAt(rand.nextInt(characters.length()));
+            }
+            for (int i = 0; i < text.length; i++) {
+                randomString += text[i];
+            }
+            System.out.println(randomString);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
 
     //create close driver method which close driver after test execute.
     public static void closeDriver() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         driver.close();
         log.info("******Browser closed******");
     }

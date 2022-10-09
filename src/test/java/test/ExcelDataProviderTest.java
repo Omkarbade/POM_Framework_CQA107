@@ -2,11 +2,10 @@ package test;
 
 import Base.Base;
 import Utility.ExcelUtil;
+import Utility.Utility;
 import org.openqa.selenium.By;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.*;
 
-import static Base.Base.driver;
 
 public class ExcelDataProviderTest extends Base {
 
@@ -14,14 +13,14 @@ public class ExcelDataProviderTest extends Base {
 @BeforeMethod
 public void triggerDriver(){
     try {
-        utility.initializeDriver(prop.getProperty("browser"));
+        Utility.initializeDriver(prop.getProperty("browser"));
     }catch (Exception e){
         e.printStackTrace();
     }
 }
 
     @Test(dataProvider = "testData")
-    public void test1(String username, String password) throws Exception {
+    public void test(String username, String password) throws Exception {
 
         driver.get("https://www.facebook.com/");
         driver.findElement(By.xpath( "//input[@id='email']")).sendKeys(username);
@@ -31,13 +30,14 @@ public void triggerDriver(){
 
     }
 
-    @DataProvider(name = "testData")
+    @DataProvider(name = "testData") //pass paraMETER in test function.
     public  Object[][] getData() {
         String excelPath = ".\\src\\main\\resources\\repository\\LoginTestData.xlsx";
+        //create reference for worksheet
         Object data[][] = testData(excelPath, "LoginTestData");
         return data;
     }
-///get the data from excel sheet.
+    //get the data from excel sheet.
     public Object[][] testData(String excelPath, String sheetName) {
         ExcelUtil excel = new ExcelUtil(excelPath, sheetName);
 
@@ -46,11 +46,11 @@ public void triggerDriver(){
 
         Object data[][] = new Object[rowCount-1][colCount];
 
-        for(int i=1; i< rowCount; i++) {
+        for(int i=1; i< rowCount; i++) {  //(2,0)
             for(int j=0; j<colCount; j++) {
 
                 String cellData = excel.getCellDataString(i, j);
-                //System.out.println(cellData + " " );
+//                System.out.println(cellData + " " );
                 data[i-1][j] = cellData;
             }
             System.out.println();

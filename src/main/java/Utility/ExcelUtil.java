@@ -1,12 +1,14 @@
 package Utility;
 
+import Base.Base;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.DataProvider;
 
-public class ExcelUtil {
-    static String projectPath;
+public class ExcelUtil  {
     static XSSFWorkbook workBook;
     static XSSFSheet sheet ;
+
 
     public ExcelUtil(String ExcelPath, String sheetName) {
         try {
@@ -18,16 +20,17 @@ public class ExcelUtil {
     }
 
     public static void main(String[] args) {
-        getRowCount();
-		getCellDataString(0,0);
-        getCellDataNumber(1,1);
+        getRowCount();  //3
+		getCellDataString(0,0);  //Username
+       // getCellDataNumber(1,1);  //
     }
 
     public static int getRowCount() {
         int rowCount = 0;
         try {
+            //call row count function.
             rowCount = sheet.getPhysicalNumberOfRows();
-            System.out.println("No of Rows :" +rowCount);
+            System.out.println("No of Rows :" +rowCount); //2
 
         }catch(Exception exp) {
             System.out.println(exp.getMessage());
@@ -40,6 +43,7 @@ public class ExcelUtil {
     public static int getColumnCount() {
         int colCount=0;
         try {
+            //call column count function.
             colCount =sheet.getRow(0).getPhysicalNumberOfCells();
             System.out.println("No of Columns :" +colCount);
 
@@ -51,9 +55,12 @@ public class ExcelUtil {
         return colCount;
     }
 
+    //get cell data
+
     public static String getCellDataString(int rowNum, int colNum) {
         String cellData = null;
         try {
+            //call function to get cell data.
             cellData = sheet.getRow(rowNum).getCell(colNum).getStringCellValue();
             System.out.println(cellData);
         }catch(Exception exp) {
@@ -65,14 +72,16 @@ public class ExcelUtil {
     }
 
 
-    public static void getCellDataNumber(int rowNum, int colNum) {
-        try {
-            double cellData = sheet.getRow(rowNum).getCell(colNum).getNumericCellValue();
-            System.out.println(cellData);
-        }catch(Exception exp) {
-            System.out.println(exp.getMessage());
-            System.out.println(exp.getCause());
-            exp.printStackTrace();
-        }
-    }
+//    public static void getCellDataNumber(int rowNum, int colNum) {
+//        try {
+//            //call function to get cell data.
+//            double cellData = sheet.getRow(rowNum).getCell(colNum).getNumericCellValue();
+//            System.out.println(cellData);
+//        }catch(Exception exp) {
+//            System.out.println(exp.getMessage());
+//            System.out.println(exp.getCause());
+//            exp.printStackTrace();
+//        }
+//    }
+
 }
