@@ -1,8 +1,8 @@
 package test;
 
 import Base.Base;
-import Utility.ExcelUtil;
-import Utility.Utility;
+import utility.ExcelUtil;
+import utility.Utility;
 import org.openqa.selenium.By;
 import org.testng.annotations.*;
 
@@ -19,6 +19,7 @@ public void triggerDriver(){
     }
 }
 
+///Test for read data form excel sheet and perform respective test
     @Test(dataProvider = "testData")
     public void test(String username, String password) throws Exception {
 

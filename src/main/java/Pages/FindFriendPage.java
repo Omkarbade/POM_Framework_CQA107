@@ -10,15 +10,11 @@ public class FindFriendPage extends LoginPage{
     WebElement findfriedBtn;
     @FindBy(xpath = "//span[text()='Suggestions']")
     WebElement suggestionsBtn;
-     // Method: To Find Friend in facebook
 
+     // Method: To Find Friend in facebook
     public void FindFriend() {
         WebDriverWait wait = new WebDriverWait(driver, 40);
         try {
-            emailId.sendKeys(prop.getProperty("emailId"));
-            password.sendKeys(prop.getProperty("password"));
-            wait.until(ExpectedConditions.visibilityOfAllElements(loginBtn));
-            loginBtn.click();
             wait.until(ExpectedConditions.visibilityOfAllElements(homeBtn));
             homeBtn.click();
             wait.until(ExpectedConditions.visibilityOfAllElements(findfriedBtn));

@@ -1,0 +1,7 @@
+Sleep(3000)
+ControlFocus("Open", "", "Edit1")
+Sleep(3000)
+ControlSetText("Open", "", "Edit1","C:\Users\OMKAR BADE\Favorites\Downloads\yellow_flowers_moving_in_air_6892454\flower_yellow_blossom_nature_windy_347.mp4")
+Sleep(3000)
+ControlFocus("Open", "", "Button1")
+Sleep(3000)

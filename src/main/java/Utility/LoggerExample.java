@@ -1,4 +1,4 @@
-package Utility;
+package utility;
 
 import Base.Base;
 import org.apache.log4j.LogManager;

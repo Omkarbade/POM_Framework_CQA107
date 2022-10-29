@@ -92,8 +92,7 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.6.1</version>
-            <scope>compile</scope>
+            <version>7.1.0</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains</groupId>

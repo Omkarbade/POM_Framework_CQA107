@@ -1,15 +1,15 @@
-package Utility;
+package utility;
 
-import Base.Base;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.DataProvider;
 
+//Utility class for excel file.
 public class ExcelUtil  {
     static XSSFWorkbook workBook;
     static XSSFSheet sheet ;
 
 
+    //class constructor
     public ExcelUtil(String ExcelPath, String sheetName) {
         try {
             workBook = new XSSFWorkbook(ExcelPath);
@@ -20,17 +20,18 @@ public class ExcelUtil  {
     }
 
     public static void main(String[] args) {
-        getRowCount();  //3
-		getCellDataString(0,0);  //Username
+        getRowCount();
+		getCellDataString(0,0);
        // getCellDataNumber(1,1);  //
     }
 
+    //method : get row count 3
     public static int getRowCount() {
         int rowCount = 0;
         try {
             //call row count function.
             rowCount = sheet.getPhysicalNumberOfRows();
-            System.out.println("No of Rows :" +rowCount); //2
+            System.out.println("No of Rows :" +rowCount);
 
         }catch(Exception exp) {
             System.out.println(exp.getMessage());
@@ -40,6 +41,7 @@ public class ExcelUtil  {
         return rowCount;
     }
 
+    /// method : get column count
     public static int getColumnCount() {
         int colCount=0;
         try {
@@ -71,17 +73,5 @@ public class ExcelUtil  {
         return cellData;
     }
 
-
-//    public static void getCellDataNumber(int rowNum, int colNum) {
-//        try {
-//            //call function to get cell data.
-//            double cellData = sheet.getRow(rowNum).getCell(colNum).getNumericCellValue();
-//            System.out.println(cellData);
-//        }catch(Exception exp) {
-//            System.out.println(exp.getMessage());
-//            System.out.println(exp.getCause());
-//            exp.printStackTrace();
-//        }
-//    }
 
 }

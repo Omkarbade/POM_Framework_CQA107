@@ -1,12 +1,11 @@
-package Utility;
+package utility;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.io.FileHandler;
@@ -26,6 +25,7 @@ import static Base.Base.*;
 
 public class Utility {
     public static Logger log = LogManager.getLogger(Utility.class);
+    ///initiaize the web driver.
     public static void initializeDriver(String browser) throws IOException {
 
         if (browser.equals("chrome")) {
@@ -45,7 +45,7 @@ public class Utility {
         driver.get(prop.getProperty("baseURL"));
     }
 
-
+//Method : set excel file path and read the data from excel file.
     public static Object[][] getLoginData() {
         XSSFWorkbook xWorkbook = null;
         try {
@@ -74,6 +74,8 @@ public class Utility {
 
     }
 
+
+    // method: read the excel file
     public static List<List<String>> excelReader() throws IOException {
         List<List<String>> values = new LinkedList<List<String>>();
        try {
@@ -103,7 +105,7 @@ public class Utility {
         return values;
     }
 
-    //implement takescreen shot method
+    //Method :implement takescreen shot
     public static void getScreenShots() throws IOException {
         Date date = new Date();
 
@@ -111,8 +113,7 @@ public class Utility {
         String date1 = date.toString();
         System.out.println("Date is: "+date1);
 
-        String date2 = date1.replaceAll(":", "_");///timing
-        System.out.println("Date without : is: "+date2);
+        String date2 = date1.replaceAll(":", "_");
         TakesScreenshot ts = (TakesScreenshot) driver;
         File srcFile = ts.getScreenshotAs(OutputType.FILE);
         File destFile = new File(System.getProperty("user.dir")+"\\Screenshot\\"+date2+"failed.png") ;
@@ -127,29 +128,95 @@ public class Utility {
 
     }
     //Method: Random string genrate
-    public static void RandomString() {
+    public static String RandomString() {
+        String randomString = null;
         try {
             String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            String randomString = "";
-
+            randomString = "";
             int length = 5;
-
+            //crate random string object.
             Random rand = new Random();
+            //character array ie each index has a value.bcz fill that array random characters
             char[] text = new char[length];
+            //add individual int character
             for (int i = 0; i < length; i++) {
+                //genrate random index numbers.
                 text[i] = characters.charAt(rand.nextInt(characters.length()));
             }
+            //text array adding each char one by one to randomstring util array is done
             for (int i = 0; i < text.length; i++) {
                 randomString += text[i];
             }
-            System.out.println(randomString);
+            System.out.println("Random-" +randomString);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return randomString;
+    }
+    ///Method : verify posted comment on photo .
+
+    public static String verifycomment() {
+        WebElement comm=driver.findElement(By.xpath("(//ul)[3]/li[last()]/div/div/div/div/div/div/div/div/div/span/div/div"));
+
+        String comment=comm.getText();
+        System.out.println(comment);
+        return comment;
     }
 
 
+    ///Method : verify Profile Cover image time.
+    public static String Verify_profileCover(){
+        WebElement web = driver.findElement(By.xpath("//span[contains(text(),'1 m')]"));
+        int x = web.getLocation().getX();
+        int y = web.getLocation().getY();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(" + x + ", " + y + ")");
 
+        String PostTime = web.getText();
+
+        System.out.println(PostTime);
+        return PostTime;
+    }
+
+    ///Method : verify Profile Cover image time.
+    public static String Verify_profileImage(){
+        WebElement web = driver.findElement(By.xpath("(//span[contains(text(),'1 m')])[1]"));
+        int x = web.getLocation().getX();
+        int y = web.getLocation().getY();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(" + x + ", " + y + ")");
+
+        String PostTime = web.getText();
+
+        System.out.println(PostTime);
+        return PostTime;
+    }
+    ///Method : verify Posted image time.
+    public static String Verify_postImage(){
+
+        WebElement web = driver.findElement(By.xpath("(//span[contains(text(),'1 m')])[1]"));
+        int x = web.getLocation().getX();
+        int y = web.getLocation().getY();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(" + x + ", " + y + ")");
+        String PostTime = web.getText();
+        System.out.println(PostTime);
+        return PostTime;
+    }
+
+    ///Method : verify Posted video image time.
+    public static String Verify_postvideo(){
+        WebElement web = driver.findElement(By.xpath("(//span[contains(text(),'1 m')])[1]")); //(//span[@class='xi7du73 x1n2onr6 x17ihmo5 x1pvdv19'])[1]
+        int x = web.getLocation().getX();
+        int y = web.getLocation().getY();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(" + x + ", " + y + ")");
+
+        String PostTime = web.getText();
+
+        System.out.println(PostTime);
+        return PostTime;
+    }
 
 
     //create close driver method which close driver after test execute.
@@ -158,6 +225,7 @@ public class Utility {
         driver.close();
         log.info("******Browser closed******");
     }
+
 }
 
 

@@ -1,7 +1,7 @@
 package Base;
 
 import Pages.LoginPage;
-import Utility.Utility;
+import utility.Utility;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

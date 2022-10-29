@@ -1,0 +1,7 @@
+Sleep(2000)
+ControlFocus("Open", "", "Edit1")
+Sleep(2000)
+ControlSetText("Open", "", "Edit1","C:\Users\OMKAR BADE\Favorites\Downloads\small_red_toadstool_192082\small_red_toadstool.jpg")
+Sleep(2000)
+ControlFocus("Open", "", "Button1")
+Sleep(2000)

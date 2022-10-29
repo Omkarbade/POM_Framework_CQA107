@@ -22,6 +22,7 @@ public class LoginPage extends Base {
     WebElement loginBtn;
 
     @FindBy(xpath = "//a[@aria-label='Home']")
+    static
     WebElement homeBtn;
 
     @FindBy(className = "_9ay7")
@@ -41,7 +42,8 @@ public class LoginPage extends Base {
             password.sendKeys(prop.getProperty("password"));
             Thread.sleep(2000);
             loginBtn.click();
-            homeBtn.click();
+            Thread.sleep(1000);
+//            homeBtn.click();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -91,7 +93,7 @@ public class LoginPage extends Base {
             return message;
         }
         // its verify homepage title and its return title.
-        public String verifyHomePage() {
+        public static String verifyHomePage() {
             String homePageTitle = driver.getTitle();
             return homePageTitle;
         }

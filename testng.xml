@@ -1,2 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"><suite name="All Test Suite"><test verbose="2" preserve-order="true" name="C:/Users/OMKAR BADE/IdeaProjects/POM_Framework/src/test/java/test/LoginPageTest.java"><classes><class name="test.LoginPageTest"><methods><include name="chromeLogin"/><include name="validloginPageWithConfigDataTest"/><include name="validateInvalidLoginCredTest"/></methods></class></classes></test></suite>
+<suite name="All Test Suite">
+    <listeners>
+        <listener class-name="utility.Listeners">
+        </listener>
+    </listeners>
+
+    <appender name="roll" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="application.log" />
+        <param name="DatePattern" value=".yyyy-MM-dd" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="%d{yyyy-MMM-dd HH:mm:ss,SSS} [%t] %c %x%n  %-5p %m%n"/>
+        </layout>
+    </appender>
+    <test thread-count="5" name="Test">
+        <classes>
+            <class name="test.LoginPageTest">
+                <methods>
+                    <include name="validloginPageWithConfigDataTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

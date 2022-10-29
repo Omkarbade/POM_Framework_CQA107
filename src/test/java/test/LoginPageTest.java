@@ -2,16 +2,14 @@ package test;
 
 import Base.Base;
 import Pages.LoginPage;
-import Utility.Utility;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
 import java.io.IOException;
-
 import static org.testng.Assert.assertEquals;
-@Listeners()
+
+@Listeners(utility.Listeners.class)
 public class LoginPageTest extends Base {
     public LoginPageTest() {
         super();
@@ -27,12 +25,15 @@ public class LoginPageTest extends Base {
             e.printStackTrace();
         }
     }
+    ////facebook login test
     @Test
     public  void chromeLogin() {
 
         String url=prop.getProperty("baseURL");
         driver.get(url);
     }
+
+    ///login fb account by use config properties data.
     @Test
     public  void validloginPageWithConfigDataTest() throws IOException {
         LoginPage LoginP = new LoginPage();
@@ -56,6 +57,7 @@ public class LoginPageTest extends Base {
 //        // assertEquals(message,"The password that you've entered is incorrect. Forgotten password?");
 //
 //    }
+    ///close driver.
     @SuppressWarnings("static-access")
     @AfterMethod
     public void terminateDriver() {
